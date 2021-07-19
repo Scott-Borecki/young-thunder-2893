@@ -1,0 +1,7 @@
+<h2><%= @actor.name %><br></h2>
+<p><%= @actor.age %></p>
+
+<h3>Coactors</h3>
+<% @actor.coactors.each do |coactor| %>
+  <%= coactor.name %><br>
+<% end %>

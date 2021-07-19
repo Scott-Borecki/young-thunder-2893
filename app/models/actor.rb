@@ -13,4 +13,12 @@ class Actor < ApplicationRecord
   def self.average_age
     average(:age).round(2)
   end
+
+  def coactors
+    movies.each_with_object([]) do |movie, array|
+      movie.actors.each do |actor|
+        array << actor unless actor == self
+      end
+    end.uniq
+  end
 end
