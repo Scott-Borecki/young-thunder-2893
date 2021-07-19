@@ -15,6 +15,13 @@ RSpec.describe Actor do
       @ford = @raiders.actors.create!(name: 'Harrison Ford', age: 79)
       @freeman = @raiders.actors.create!(name: 'Paul Freeman', age: 78)
       @allen = @raiders.actors.create!(name: 'Karen Allen', age: 69)
+
+      @disney    = Studio.create(name: 'Disney', location: 'Orlando')
+      @alladin   = @disney.movies.create(title: 'Alladin', creation_year: 1981, genre: 'Children')
+      @toy_story = @disney.movies.create(title: 'Toy Story 3', creation_year: 2001, genre: 'Comedy')
+
+      @jafar = @alladin.actors.create!(name: 'Jafar', age: 59)
+      @hanks = @toy_story.actors.create!(name: 'Tom Hanks', age: 65)
     end
 
     describe '#find_all_by_movie' do
@@ -25,13 +32,13 @@ RSpec.describe Actor do
 
     describe '#order_by_youngest_age' do
       it 'can return the actors in order of youngest to oldest' do
-        expect(Actor.order_by_youngest_age).to eq([@allen, @freeman, @ford])
+        expect(Actor.order_by_youngest_age).to eq([@jafar, @hanks, @allen, @freeman, @ford])
       end
     end
 
     describe '#average_age' do
       it 'can return the average age of the actors' do
-        expect(Actor.average_age).to eq(75.33)
+        expect(Actor.average_age).to eq(70)
       end
     end
 
