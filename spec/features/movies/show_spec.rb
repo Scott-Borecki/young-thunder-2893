@@ -45,5 +45,25 @@ RSpec.describe 'The Movie Show Page' do
       expect(current_path).to eq("/movies/#{@raiders.id}")
       expect(page).to have_content("Average Age of Actors: 75.33")
     end
+
+    it 'does not display actors not in the movie' do
+      expect(current_path).to eq("/movies/#{@raiders.id}")
+      expect(page).to_not have_content(@jafar.name)
+    end
+
+    describe 'And I see a form to add an actor to this movie' do
+      it 'can add an actor to a movie using the form' do
+        expect(current_path).to eq("/movies/#{@raiders.id}")
+
+        fill_in :name, with: "Jafar"
+        click_button 'Submit'
+
+        expect(current_path).to eq("/movies/#{@raiders.id}")
+
+        within '#actors' do
+          expect(page).to have_content(@jafar.name)
+        end
+      end
+    end
   end
 end
