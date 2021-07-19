@@ -17,9 +17,9 @@ RSpec.describe Actor do
       @allen = @raiders.actors.create!(name: 'Karen Allen', age: 69)
     end
 
-    describe '#by_movie' do
+    describe '#find_all_by_movie' do
       it 'can return the actors by movie' do
-        expect(Actor.by_movie(@raiders)).to eq([@ford, @freeman, @allen])
+        expect(Actor.find_all_by_movie(@raiders)).to eq([@ford, @freeman, @allen])
       end
     end
 
