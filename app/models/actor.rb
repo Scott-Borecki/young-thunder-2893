@@ -15,6 +15,6 @@ class Actor < ApplicationRecord
   end
 
   def coactors
-    Actor.joins(:movies).where(movies: {id: [movies]}).where.not(actors: {id: self.id})
+    Actor.joins(:movies).where(movies: {id: [movies]}).where.not(actors: {id: id})
   end
 end
