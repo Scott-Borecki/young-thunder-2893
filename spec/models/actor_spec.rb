@@ -52,10 +52,6 @@ RSpec.describe Actor do
         expect(Actor.find_by_name('Harrison Ford')).to eq(@ford)
       end
     end
-
-    describe '#by_coactor' do
-
-    end
   end
 
   describe 'instance methods' do
