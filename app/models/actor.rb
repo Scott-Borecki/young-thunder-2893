@@ -9,4 +9,8 @@ class Actor < ApplicationRecord
   def self.order_by_youngest_age
     order(:age)
   end
+
+  def self.average_age
+    average(:age).round(2)
+  end
 end

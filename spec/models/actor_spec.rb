@@ -28,5 +28,11 @@ RSpec.describe Actor do
         expect(Actor.order_by_youngest_age).to eq([@allen, @freeman, @ford])
       end
     end
+
+    describe '#average_age' do
+      it 'can return the average age of the actors' do
+        expect(Actor.average_age).to eq(75.33)
+      end
+    end
   end
 end

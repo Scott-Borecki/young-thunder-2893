@@ -15,6 +15,8 @@ RSpec.describe 'The Movie Show Page' do
       @freeman = @raiders.actors.create!(name: 'Paul Freeman', age: 78)
       @allen = @raiders.actors.create!(name: 'Karen Allen', age: 69)
 
+      @jafar = @alladin.actors.create!(name: 'Jafar', age: 59)
+
       visit "/movies/#{@raiders.id}"
     end
 
