@@ -15,10 +15,6 @@ class Actor < ApplicationRecord
   end
 
   def coactors
-    movies.each_with_object([]) do |movie, array|
-      movie.actors.each do |actor|
-        array << actor unless actor == self
-      end
-    end.uniq
+    Actor.joins(:movies).where(movies: {id: [movies]}).where.not(actors: {id: self.id})
   end
 end
