@@ -40,6 +40,11 @@ RSpec.describe Actor do
       it 'can return the average age of the actors' do
         expect(Actor.average_age).to eq(70)
       end
+
+      it 'can return zero if no actors' do
+        Actor.destroy_all
+        expect(Actor.average_age).to eq(0)
+      end
     end
 
     describe '#find_by_name' do

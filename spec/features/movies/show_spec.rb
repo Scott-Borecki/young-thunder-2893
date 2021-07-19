@@ -46,6 +46,12 @@ RSpec.describe 'The Movie Show Page' do
       expect(page).to have_content("Average Age of Actors: 75.33")
     end
 
+    it 'displays average age of 0 if no actors in movie' do
+      visit "/movies/#{@toy_story.id}"
+      expect(current_path).to eq("/movies/#{@toy_story.id}")
+      expect(page).to have_content("Average Age of Actors: 0")
+    end
+
     it 'does not display actors not in the movie' do
       expect(current_path).to eq("/movies/#{@raiders.id}")
       expect(page).to_not have_content(@jafar.name)

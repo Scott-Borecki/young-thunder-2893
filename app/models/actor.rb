@@ -11,7 +11,7 @@ class Actor < ApplicationRecord
   end
 
   def self.average_age
-    average(:age).round(2)
+    count > 0 ? average(:age).round(2) : 0
   end
 
   def coactors
