@@ -22,5 +22,11 @@ RSpec.describe Actor do
         expect(Actor.by_movie(@raiders)).to eq([@ford, @freeman, @allen])
       end
     end
+
+    describe '#order_by_youngest_age' do
+      it 'can return the actors in order of youngest to oldest' do
+        expect(Actor.order_by_youngest_age).to eq([@allen, @freeman, @ford])
+      end
+    end
   end
 end

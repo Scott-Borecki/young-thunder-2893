@@ -5,4 +5,8 @@ class Actor < ApplicationRecord
   def self.by_movie(movie)
     joins(:movie_actors).where(movie_actors: { movie_id: movie.id })
   end
+
+  def self.order_by_youngest_age
+    order(:age)
+  end
 end

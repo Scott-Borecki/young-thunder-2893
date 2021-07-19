@@ -14,11 +14,11 @@ RSpec.describe 'The Movie Show Page' do
       @ford = @raiders.actors.create!(name: 'Harrison Ford', age: 79)
       @freeman = @raiders.actors.create!(name: 'Paul Freeman', age: 78)
       @allen = @raiders.actors.create!(name: 'Karen Allen', age: 69)
+
+      visit "/movies/#{@raiders.id}"
     end
 
     it 'displays the movies title creation year, and genre' do
-      visit "/movies/#{@raiders.id}"
-
       expect(current_path).to eq("/movies/#{@raiders.id}")
       expect(page).to have_content(@raiders.title)
       expect(page).to have_content(@raiders.creation_year)
@@ -26,16 +26,22 @@ RSpec.describe 'The Movie Show Page' do
     end
 
     it 'displays all its actors' do
-      visit "/movies/#{@raiders.id}"
-
       expect(current_path).to eq("/movies/#{@raiders.id}")
       expect(page).to have_content(@ford.name)
       expect(page).to have_content(@freeman.name)
       expect(page).to have_content(@allen.name)
     end
 
-    it 'displays its actors from youngest to oldest'
+    it 'displays its actors from youngest to oldest' do
+      expect(current_path).to eq("/movies/#{@raiders.id}")
+      expect(page).to have_content("#{@allen.name} #{@freeman.name} #{@ford.name}")
+      # expect(@allen.name).to appear_before(@freeman.name) # capybara not working?
+      # expect(@freeman.name).to appear_before(@ford.name) # capybara not working?
+    end
 
-    it 'displyas the average age of all the movies actors'
+    it 'displays the average age of all the movies actors' do
+      expect(current_path).to eq("/movies/#{@raiders.id}")
+      expect(page).to have_content("Average Age of Actors: 75.33")
+    end
   end
 end
