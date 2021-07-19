@@ -3,7 +3,7 @@
   <p>
     <%= studio.name %><br>
     <%= studio.location %><br>
-    <% Movie.by_studio(studio).each do |movie| %>
+    <% Movie.find_all_by_studio(studio).each do |movie| %>
       <%= movie.title %><br>
     <% end %>
   </p>

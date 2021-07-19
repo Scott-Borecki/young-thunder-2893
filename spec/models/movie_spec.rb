@@ -18,10 +18,10 @@ RSpec.describe Movie do
       @toy_story = @disney.movies.create(title: 'Toy Story 3', creation_year: 2001, genre: 'Comedy')
     end
 
-    describe '#by_studio' do
+    describe '#find_all_by_studio' do
       it 'can return movies by studio' do
-        expect(Movie.by_studio(@universal)).to eq([@raiders, @shrek])
-        expect(Movie.by_studio(@disney)).to eq([@alladin, @toy_story])
+        expect(Movie.find_all_by_studio(@universal)).to eq([@raiders, @shrek])
+        expect(Movie.find_all_by_studio(@disney)).to eq([@alladin, @toy_story])
       end
     end
   end

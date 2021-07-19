@@ -3,7 +3,7 @@ class Movie < ApplicationRecord
   has_many :movie_actors
   has_many :actors, through: :movie_actors
 
-  def self.by_studio(studio)
+  def self.find_all_by_studio(studio)
     where(studio_id: studio.id)
   end
 end
